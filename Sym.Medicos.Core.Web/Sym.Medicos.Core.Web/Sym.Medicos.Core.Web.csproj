@@ -10,10 +10,25 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <AssemblyName>Sym.Medicos.Core.Web</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors>;NU1605</WarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +36,31 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <None Remove="ClientApp\src\app\consultorio\consultorio.component.ts" />
+    <None Remove="ClientApp\src\app\consultorio\pesquisa\pesquisa.consultorio.component.ts" />
+    <None Remove="ClientApp\src\app\medico\medico.component.ts" />
+    <None Remove="ClientApp\src\app\medico\pesquisa\pesquisa.medico.component.ts" />
+    <None Remove="ClientApp\src\app\model\consultorio.ts" />
+    <None Remove="ClientApp\src\app\model\medico.ts" />
+    <None Remove="ClientApp\src\app\model\usuario.ts" />
+    <None Remove="ClientApp\src\app\model\VinculoMedicoConsultorio.ts" />
+    <None Remove="ClientApp\src\app\services\consutorio\consultorio.servico.ts" />
+    <None Remove="ClientApp\src\app\services\medico\medico.servico.ts" />
+    <None Remove="ClientApp\src\app\services\usuario\usuario.servico.ts" />
+    <None Remove="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
+    <None Remove="ClientApp\src\app\usuario\login\login.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\services\consutorio\consultorio.servico.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

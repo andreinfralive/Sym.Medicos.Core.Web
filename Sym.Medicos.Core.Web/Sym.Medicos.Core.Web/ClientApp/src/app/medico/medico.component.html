@@ -1,0 +1,93 @@
+<div class="text-center">
+  <form class="form-signin" #formSign="ngForm">
+    <h1 class="h4 mb-2 login col-md-4">Cadastro de Médicos</h1>
+
+    <label for="inputCrm" class="sr-only">Crm</label>
+    <input type="text" id="inputCrm"
+           name="crm" placeholder="Crm"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':crm.invalid && (crm.dirty || crm.touched),
+            'is-valid':crm.valid && (crm.dirty || crm.touched)
+           }"
+           [(ngModel)]="medico.crm"
+           #crm="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="crm.invalid && (crm.dirty || crm.touched)">
+      <div *ngIf="crm.errors.required">
+        CRM é de preenchimento obrigatório.
+      </div>
+    </div>
+
+    <label for="inputNomeMedico" class="sr-only">Nome do Médico</label>
+    <input type="text" id="inputNomeMedico"
+           name="nomeMedico" placeholder="Nome do Médico"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':nomeMedico.invalid && (nomeMedico.dirty || nomeMedico.touched),
+            'is-valid':nomeMedico.valid && (nomeMedico.dirty || nomeMedico.touched)
+           }"
+           [(ngModel)]="medico.nomeMedico"
+           #nomeMedico="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="nomeMedico.invalid && (nomeMedico.dirty || nomeMedico.touched)">
+      <div *ngIf="nomeMedico.errors.required">
+        Nome do Médico é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <label for="inputTelefone" class="sr-only">Telefone</label>
+    <input type="text" id="inputTelefone"
+           name="telefone" placeholder="Telefone"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':telefone.invalid && (telefone.dirty || telefone.touched),
+            'is-valid':telefone.valid && (telefone.dirty || telefone.touched)
+           }"
+           [(ngModel)]="medico.telefone"
+           #telefone="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="telefone.invalid && (telefone.dirty || telefone.touched)">
+      <div *ngIf="telefone.errors.required">
+        Telefone é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <label for="inputValorConsulta" class="sr-only">Valor Consulta</label>
+    <input type="number" id="inputValorConsulta"
+           name="valorConsulta" placeholder="Valor da Consulta"
+           class="form-control mb-2 col-md-4"
+           #valorConsulta="ngModel"
+           [(ngModel)]="medico.valorConsulta"
+           [ngClass]="{
+            'is-invalid':valorConsulta.invalid && (valorConsulta.dirty || valorConsulta.touched),
+            'is-valid':valorConsulta.valid && (valorConsulta.dirty || valorConsulta.touched)
+           }"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="valorConsulta.invalid && (valorConsulta.dirty || valorConsulta.touched)">
+      <div *ngIf="valorConsulta.errors.required">
+        O Valor da Consulta deve ser informada
+      </div>
+    </div>
+
+    <div class="form-inline">
+      <button class="btn btn-primary col-md-1" style="margin-right: 4px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+        <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+      <button class="btn btn-secondary col-md-1" [routerLink]="['/pesquisa-medico']">Cancelar</button>
+    </div>
+
+    <div class="alert alert-danger col-md-4" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+    <div class="alert alert-success col-md-4" *ngIf="medicoCadastrado">
+      Médico cadastrado com sucesso!
+    </div>
+  </form>
+</div>
+

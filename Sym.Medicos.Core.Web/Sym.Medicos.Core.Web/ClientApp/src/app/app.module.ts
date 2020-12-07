@@ -6,17 +6,30 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { MedicoComponent } from './medico/medico.component';
+import { ConsultorioComponent } from './consultorio/consultorio.component';
+import { LoginComponent } from '../app/usuario/login/login.component';
+import { GuardaRotas } from './autorizacao/guarda.rotas';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { CadastroUsuarioComponent } from '../app/usuario/cadastro/cadastro.usuario.component';
+import { UsuarioServico } from './services/usuario/usuario.servico';
+import { MedicoServico } from './services/medico/medico.servico';
+import { ConsultorioServico } from './services/consutorio/consultorio.servico';
+import { PesquisaConsultorioComponent } from './consultorio/pesquisa/pesquisa.consultorio.component';
+import { PesquisaMedicoComponent } from './medico/pesquisa/pesquisa.medico.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    MedicoComponent,
+    ConsultorioComponent,
+    LoginComponent,
+    CadastroUsuarioComponent,
+    PesquisaConsultorioComponent,
+    PesquisaMedicoComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -24,11 +37,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'Medico', component: MedicoComponent, canActivate: [GuardaRotas] },
+      { path: 'Consultorio', component: ConsultorioComponent, canActivate: [GuardaRotas] },
+      { path: 'Entrar', component: LoginComponent },
+      { path: 'novo-usuario', component: CadastroUsuarioComponent },
+      { path: 'pesquisa-consultorio', component: PesquisaConsultorioComponent, canActivate: [GuardaRotas] },
+      { path: 'pesquisa-medico', component: PesquisaMedicoComponent, canActivate: [GuardaRotas] },
     ])
   ],
-  providers: [],
+  providers: [UsuarioServico, MedicoServico, ConsultorioServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,25 @@
+<h1 class="h4 titulo mb-2">Listagem Médicos</h1>
+<p *ngIf="!medicos">Carregando Médicos...</p>
+
+<button class="btn btn-primary mb-2" (click)="adicionarMedico()">Adicionar Médico</button>
+
+<table class="table table-hover" *ngIf="medicos">
+  <thead>
+    <tr>
+      <th>CRM</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>Valor da Consulta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of medicos">
+      <td>{{m.crm}}</td>
+      <td style="width:50%">{{m.nomeMedico}}</td>
+      <td style="width:20%">{{m.telefone}}</td>
+      <td style="width:20%">{{m.valorConsulta}}</td>
+      <td><button class="btn btn-success btn-sm" (click)="editarMedico(m)">Editar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletarMedico(m)">deletar</button></td>
+    </tr>
+  </tbody>
+</table>

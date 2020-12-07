@@ -1,0 +1,75 @@
+<div class="text-center">
+  <form class="form-signin" #formSign="ngForm">
+    <h1 class="h4 mb-2 login col-md-4">Cadastro de Consultórios</h1>
+
+    <label for="inputNomeConsultorio" class="sr-only">Nome do Consultório</label>
+    <input type="text" id="inputNomeConsultorio"
+           name="nomeConsultorio" placeholder="Nome do Consultório"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':nomeConsultorio.invalid && (nomeConsultorio.dirty || nomeConsultorio.touched),
+            'is-valid':nomeConsultorio.valid && (nomeConsultorio.dirty || nomeConsultorio.touched)
+           }"
+           [(ngModel)]="consultorio.nomeConsultorio"
+           #nomeConsultorio="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="nomeConsultorio.invalid && (nomeConsultorio.dirty || nomeConsultorio.touched)">
+      <div *ngIf="nomeConsultorio.errors.required">
+        Nome do Consultório é de preenchimento obrigatório.
+      </div>
+    </div>
+
+    <label for="inputEnderecoConsultorio" class="sr-only">Endereço do Consultório</label>
+    <input type="text" id="inputEnderecoConsultorio"
+           name="enderecoConsultorio" placeholder="Endereço do Consultório"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':enderecoConsultorio.invalid && (enderecoConsultorio.dirty || enderecoConsultorio.touched),
+            'is-valid':enderecoConsultorio.valid && (enderecoConsultorio.dirty || enderecoConsultorio.touched)
+           }"
+           [(ngModel)]="consultorio.enderecoConsultorio"
+           #enderecoConsultorio="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="enderecoConsultorio.invalid && (enderecoConsultorio.dirty || enderecoConsultorio.touched)">
+      <div *ngIf="enderecoConsultorio.errors.required">
+        Endereço do Consultório é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <label for="inputTelefoneConsultorio" class="sr-only">Telefone do Consultório</label>
+    <input type="text" id="inputTelefoneConsultorio"
+           name="telefoneConsultorio" placeholder="Telefone do Consultório"
+           class="form-control mb-2 col-md-4"
+           [ngClass]="{
+            'is-invalid':telefoneConsultorio.invalid && (telefoneConsultorio.dirty || telefoneConsultorio.touched),
+            'is-valid':telefoneConsultorio.valid && (telefoneConsultorio.dirty || telefoneConsultorio.touched)
+           }"
+           [(ngModel)]="consultorio.telefoneConsultorio"
+           #telefoneConsultorio="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="telefoneConsultorio.invalid && (telefoneConsultorio.dirty || telefoneConsultorio.touched)">
+      <div *ngIf="telefoneConsultorio.errors.required">
+        Telefone do Consultório é de preenchimento obrigatório
+      </div>
+    </div>
+
+    <div class="form-inline">
+      <button class="btn btn-primary col-md-1" style="margin-right: 4px;" (click)="cadastrar()" [disabled]="ativar_spinner">
+        <span class="spinner-border spinner-border-sm" *ngIf="ativar_spinner"></span>
+        Cadastrar
+      </button>
+      <button class="btn btn-secondary col-md-1" [routerLink]="['/pesquisa-consultorio']">Cancelar</button>
+    </div>
+
+    <div class="alert alert-danger col-md-1" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+    <div class="alert alert-success col-md-4" *ngIf="consultorioCadastrado">
+      Consultório cadastrado com sucesso!
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,23 @@
+<h1 class="h4 titulo mb-2">Listagem Consultórios</h1>
+<p *ngIf="!consultorios">Carregando Consultórios...</p>
+
+<button class="btn btn-primary mb-2" (click)="adicionarConsultorio()">Adicionar Consultórios</button>
+
+<table class="table table-hover" *ngIf="consultorios">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Telefone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of consultorios">
+      <td>{{c.nomeConsultorio}}</td>
+      <td style="width:50%">{{c.enderecoConsultorio}}</td>
+      <td style="width:20%">{{c.telefoneConsultorio}}</td>
+      <td><button class="btn btn-success btn-sm" (click)="editarConsultorio(c)">Editar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletarConsultorio(c)">deletar</button></td>
+    </tr>
+  </tbody>
+</table>

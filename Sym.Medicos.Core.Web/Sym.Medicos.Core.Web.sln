@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{D8BFC9D3-2B37-41FF-A7A6-FA5DF0BD76BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sym.Medicos.Core.Web", "Sym.Medicos.Core.Web\Sym.Medicos.Core.Web.csproj", "{F5352936-7F73-4DC3-8A53-9E28900F4059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sym.Medicos.Core.Web", "Sym.Medicos.Core.Web\Sym.Medicos.Core.Web.csproj", "{F5352936-7F73-4DC3-8A53-9E28900F4059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
