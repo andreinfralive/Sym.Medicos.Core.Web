@@ -3,7 +3,7 @@
 
 <button class="btn btn-primary mb-2" (click)="adicionarUsuario()">Adicionar Usuários</button>
 
-<table class="table table-hover" *ngIf="usuarios">
+<table class="table table-striped table-hover" *ngIf="usuarios">
   <thead>
     <tr>
       <th>Nome</th>
@@ -16,10 +16,10 @@
   <tbody>
     <tr *ngFor="let u of usuarios">
       <td>{{u.nomeUsuario}}</td>
-      <td style="width:50%">{{u.sobreNomeUsuario}}</td>
-      <td style="width:20%">{{u.email}}</td>
-      <td style="width:20%">{{u.senha}}</td>
-      <td style="width:20%">{{u.ehAdministrador}}</td>
+      <td>{{u.sobreNomeUsuario}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.senha}}</td>
+      <td>{{u.ehAdministrador}}</td>
       <td><button class="btn btn-success btn-sm" (click)="editarUsuario(u)">Editar</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarUsuario(u)">deletar</button></td>
     </tr>

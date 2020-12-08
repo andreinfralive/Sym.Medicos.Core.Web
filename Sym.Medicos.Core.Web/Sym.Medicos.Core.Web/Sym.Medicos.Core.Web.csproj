@@ -49,6 +49,7 @@
     <None Remove="ClientApp\src\app\model\usuario.ts" />
     <None Remove="ClientApp\src\app\model\VinculoMedicoConsultorio.ts" />
     <None Remove="ClientApp\src\app\services\consutorio\consultorio.servico.ts" />
+    <None Remove="ClientApp\src\app\services\home\home.service.ts" />
     <None Remove="ClientApp\src\app\services\medico\medico.servico.ts" />
     <None Remove="ClientApp\src\app\services\usuario\usuario.servico.ts" />
     <None Remove="ClientApp\src\app\services\vinculo\vinculo.service.ts" />
@@ -65,6 +66,12 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\services\consutorio\consultorio.servico.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\assets\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

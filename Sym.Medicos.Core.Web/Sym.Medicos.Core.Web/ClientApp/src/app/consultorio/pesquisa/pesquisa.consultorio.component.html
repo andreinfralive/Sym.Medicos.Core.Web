@@ -3,7 +3,7 @@
 
 <button class="btn btn-primary mb-2" (click)="adicionarConsultorio()">Adicionar Consultórios</button>
 
-<table class="table table-hover" *ngIf="consultorios">
+<table class="table table-striped table-hover" *ngIf="consultorios">
   <thead>
     <tr>
       <th>Nome</th>
@@ -14,8 +14,8 @@
   <tbody>
     <tr *ngFor="let c of consultorios">
       <td>{{c.nomeConsultorio}}</td>
-      <td style="width:50%">{{c.enderecoConsultorio}}</td>
-      <td style="width:20%">{{c.telefoneConsultorio}}</td>
+      <td>{{c.enderecoConsultorio}}</td>
+      <td>{{c.telefoneConsultorio}}</td>
       <td><button class="btn btn-success btn-sm" (click)="editarConsultorio(c)">Editar</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarConsultorio(c)">deletar</button></td>
     </tr>

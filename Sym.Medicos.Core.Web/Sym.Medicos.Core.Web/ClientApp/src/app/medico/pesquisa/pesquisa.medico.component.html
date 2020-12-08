@@ -3,7 +3,7 @@
 
 <button class="btn btn-primary mb-2" (click)="adicionarMedico()">Adicionar Médico</button>
 
-<table class="table table-hover" *ngIf="medicos">
+<table class="table table-striped table-hover" *ngIf="medicos">
   <thead>
     <tr>
       <th>CRM</th>
@@ -15,9 +15,9 @@
   <tbody>
     <tr *ngFor="let m of medicos">
       <td>{{m.crm}}</td>
-      <td style="width:50%">{{m.nomeMedico}}</td>
-      <td style="width:20%">{{m.telefone}}</td>
-      <td style="width:20%">{{m.valorConsulta}}</td>
+      <td>{{m.nomeMedico}}</td>
+      <td>{{m.telefone}}</td>
+      <td>{{m.valorConsulta}}</td>
       <td><button class="btn btn-success btn-sm" (click)="editarMedico(m)">Editar</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarMedico(m)">deletar</button></td>
     </tr>

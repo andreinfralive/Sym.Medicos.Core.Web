@@ -3,7 +3,7 @@
 
 <button class="btn btn-primary mb-2" (click)="adicionarVinculo()">Adicionar Vínculo</button>
 
-<table class="table table-hover" *ngIf="vinculos">
+<table class="table table-striped table-hover" *ngIf="vinculos">
   <thead>
     <tr>
       <th>Id Vinculo</th>
@@ -15,9 +15,9 @@
   <tbody>
     <tr *ngFor="let v of vinculos">
       <td>{{v.idVinculoMedicoConsultorio}}</td>
-      <td style="width:20%">{{v.crm}}</td>
-      <td style="width:20%">{{v.nomeMedico}}</td>
-      <td style="width:20%">{{v.nomeConsultorio}}</td>
+      <td>{{v.crm}}</td>
+      <td>{{v.nomeMedico}}</td>
+      <td>{{v.nomeConsultorio}}</td>
       <td><button class="btn btn-success btn-sm" (click)="editarVinculo(v)">Editar</button></td>
       <td><button class="btn btn-danger btn-sm" (click)="deletarVinculo(v)">deletar</button></td>
     </tr>
