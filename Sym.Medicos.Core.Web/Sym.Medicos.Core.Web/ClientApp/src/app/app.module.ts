@@ -17,6 +17,7 @@ import { MedicoServico } from './services/medico/medico.servico';
 import { ConsultorioServico } from './services/consutorio/consultorio.servico';
 import { PesquisaConsultorioComponent } from './consultorio/pesquisa/pesquisa.consultorio.component';
 import { PesquisaMedicoComponent } from './medico/pesquisa/pesquisa.medico.component';
+import { PesquisaUsuarioComponent } from './usuario/pesquisa/pesquisa.usuario.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PesquisaMedicoComponent } from './medico/pesquisa/pesquisa.medico.compo
     CadastroUsuarioComponent,
     PesquisaConsultorioComponent,
     PesquisaMedicoComponent,
+    PesquisaUsuarioComponent,
     HomeComponent
   ],
   imports: [
@@ -43,6 +45,7 @@ import { PesquisaMedicoComponent } from './medico/pesquisa/pesquisa.medico.compo
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'pesquisa-consultorio', component: PesquisaConsultorioComponent, canActivate: [GuardaRotas] },
       { path: 'pesquisa-medico', component: PesquisaMedicoComponent, canActivate: [GuardaRotas] },
+      { path: 'pesquisa-usuario', component: PesquisaUsuarioComponent, canActivate: [GuardaRotas] },
     ])
   ],
   providers: [UsuarioServico, MedicoServico, ConsultorioServico],

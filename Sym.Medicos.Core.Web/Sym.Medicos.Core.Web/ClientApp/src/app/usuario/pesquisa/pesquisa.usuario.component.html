@@ -1,0 +1,27 @@
+<h1 class="h4 titulo mb-2">Listagem Usuários</h1>
+<p *ngIf="!usuarios">Carregando Usuários...</p>
+
+<button class="btn btn-primary mb-2" (click)="adicionarUsuario()">Adicionar Usuários</button>
+
+<table class="table table-hover" *ngIf="usuarios">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Sobrenome</th>
+      <th>Email</th>
+      <th>Senha</th>
+      <th>Administrador</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of usuarios">
+      <td>{{u.nomeUsuario}}</td>
+      <td style="width:50%">{{u.sobreNomeUsuario}}</td>
+      <td style="width:20%">{{u.email}}</td>
+      <td style="width:20%">{{u.senha}}</td>
+      <td style="width:20%">{{u.ehAdministrador}}</td>
+      <td><button class="btn btn-success btn-sm" (click)="editarUsuario(u)">Editar</button></td>
+      <td><button class="btn btn-danger btn-sm" (click)="deletarUsuario(u)">deletar</button></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Usuario } from "../../model/usuario";
@@ -8,25 +8,58 @@ import { environment } from "../../../../src/environments/environment";
   providedIn: "root"
 })
 
-export class UsuarioServico {
-
+export class UsuarioServico implements OnInit{
   private baseURL: string;
-  private _usuario: Usuario;
+  private _usuarios: Usuario;
 
   set usuario(usuario: Usuario) {
     sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
-    this._usuario = usuario;
+    this._usuarios = usuario;
+  }
+
+  /* Construtor */
+  constructor(private http: HttpClient) {
+    this.baseURL = environment.baseURL;
+  }
+    ngOnInit(): void {
+        throw new Error("Method not implemented.");
+    }
+
+  get headers(): HttpHeaders {
+    return new HttpHeaders().set('content-type', 'application/json');
+  }
+
+  /* Cadastra o Usuario */
+  public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario),
+      { headers: this.headers });
+  }
+
+  /* Deletar Usuario */
+  public deletar(usuario: Usuario): Observable<Usuario[]> {
+    return this.http.post<Usuario[]>(this.baseURL + "api/usuario/deletar", JSON.stringify(usuario),
+      { headers: this.headers });
+  }
+
+  /* Obter todos os Usuarios */
+  public obterTodosUsuarios(): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(this.baseURL + "api/usuario");
+  }
+
+  /* Obter Medico por Id */
+  public obterUsuarioPorId(idUsuario: number): Observable<Usuario> {
+    return this.http.get<Usuario>(this.baseURL + "api/usuario/obterUsuarioPorId");
   }
 
   get usuario(): Usuario {
     let usuario_json = sessionStorage.getItem("usuario-autenticado");
-    this._usuario = JSON.parse(usuario_json);
-    return this._usuario;
+    this._usuarios = JSON.parse(usuario_json);
+    return this._usuarios;
   }
 
   /* Verificar se o Usuário está autenticado */
   public usuario_autenticado(): boolean {
-    return this._usuario != null && this._usuario.email != "" && this._usuario.senha != "";
+    return this._usuarios != null && this._usuarios.email != "" && this._usuarios.senha != "";
   }
 
   /* Verifica se o Usuario é Administrador */
@@ -37,16 +70,7 @@ export class UsuarioServico {
   /* Limpa a sessao */
   public limpar_sessao() {
     sessionStorage.setItem("usuario-autenticado", "");
-    this._usuario = null;
-  }
-
-  get headers(): HttpHeaders {
-    return new HttpHeaders().set('content-type', 'application/json');
-  }
-
-  /* Construtor */
-  constructor(private http: HttpClient) {
-    this.baseURL = environment.baseURL;
+    this._usuarios = null;
   }
 
   /* Verifica o usuario e retorna se está valido */
@@ -58,12 +82,6 @@ export class UsuarioServico {
       senha: usuario.senha
     }
     return this.http.post<Usuario>(this.baseURL + "api/usuario/verificaUsuario", body, { headers });
-  }
-
-  /* Cadastra o Usuario */
-  public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.baseURL + "api/usuario", JSON.stringify(usuario),
-      { headers: this.headers });
   }
 }
 

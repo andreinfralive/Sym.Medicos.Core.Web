@@ -31,12 +31,6 @@ export class MedicoServico implements OnInit {
       { headers: this.headers });
   }
 
-  /* Salvar Medico */
-  public editarConsultorio(medico: Medico): Observable<Medico> {
-    return this.http.put<Medico>(this.baseURL + "api/medico/editarMedico", JSON.stringify(medico),
-      { headers: this.headers });
-  }
-
   /* Deletar Medico */
   public deletar(medico: Medico): Observable<Medico[]> {
     return this.http.post<Medico[]>(this.baseURL + "api/medico/deletar", JSON.stringify(medico),

@@ -2,38 +2,38 @@
   <form class="form-signin" #formSign="ngForm">
     <h1 class="h4 mb-2 login col-md-4">Criar Usuário</h1>
 
-    <label for="inputNome" class="sr-only">Nome</label>
-    <input type="text" id="inputNome"
-           name="nome" placeholder="Nome"
+    <label for="inputNomeUsuario" class="sr-only">Nome</label>
+    <input type="text" id="inputNomeUsuario"
+           name="nomeUsuario" placeholder="Nome Usuário"
            class="form-control mb-2 col-md-4"
            [ngClass]="{
-            'is-invalid':nome.invalid && (nome.dirty || nome.touched),
-            'is-valid':nome.valid && (nome.dirty || nome.touched)
+            'is-invalid':nomeUsuario.invalid && (nomeUsuario.dirty || nomeUsuario.touched),
+            'is-valid':nomeUsuario.valid && (nomeUsuario.dirty || nomeUsuario.touched)
            }"
            [(ngModel)]="usuario.nomeUsuario"
-           #nome="ngModel"
+           #nomeUsuario="ngModel"
            required />
 
-    <div class="invalid-feedback mb-2 col-md-4" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
-      <div *ngIf="nome.errors.required">
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="nomeUsuario.invalid && (nomeUsuario.dirty || nomeUsuario.touched)">
+      <div *ngIf="nomeUsuario.errors.required">
         Nome é de preenchimento obrigatório
       </div>
     </div>
 
-    <label for="inputSobreNome" class="sr-only">Sobre Nome</label>
-    <input type="text" id="inputSobreNome"
-           name="sobreNome" placeholder="Sobre Nome"
+    <label for="inputSobreNomeUsuario" class="sr-only">Sobre Nome</label>
+    <input type="text" id="inputSobreNomeUsuario"
+           name="sobreNomeUsuario" placeholder="Sobre Nome"
            class="form-control mb-2 col-md-4"
            [ngClass]="{
-            'is-invalid':sobreNome.invalid && (sobreNome.dirty || sobreNome.touched),
-            'is-valid':sobreNome.valid && (sobreNome.dirty || sobreNome.touched)
+            'is-invalid':sobreNomeUsuario.invalid && (sobreNomeUsuario.dirty || sobreNomeUsuario.touched),
+            'is-valid':sobreNomeUsuario.valid && (sobreNomeUsuario.dirty || sobreNomeUsuario.touched)
            }"
            [(ngModel)]="usuario.sobreNomeUsuario"
-           #sobreNome="ngModel"
+           #sobreNomeUsuario="ngModel"
            required />
 
-    <div class="invalid-feedback mb-2 col-md-4" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
-      <div *ngIf="sobreNome.errors.required">
+    <div class="invalid-feedback mb-2 col-md-4" *ngIf="sobreNomeUsuario.invalid && (sobreNomeUsuario.dirty || sobreNomeUsuario.touched)">
+      <div *ngIf="sobreNomeUsuario.errors.required">
         Sobre Nome é de preenchimento obrigatório
       </div>
     </div>
@@ -88,10 +88,10 @@
     </div>
 
 
-    <div class="alert alert-danger" *ngIf="mensagem">
+    <div class="alert alert-danger col-md-4" *ngIf="mensagem">
       {{mensagem}}
     </div>
-    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+    <div class="alert alert-success col-md-4" *ngIf="usuarioCadastrado">
       Usuário cadastrado com sucesso!<a class="alert-link" [routerLink]='["/entrar"]'>Clique aqui</a> para entrar no sistema com a sua conta.
     </div>
   </form>

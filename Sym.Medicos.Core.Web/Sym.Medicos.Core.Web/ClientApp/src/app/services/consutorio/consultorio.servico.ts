@@ -31,12 +31,6 @@ export class ConsultorioServico implements OnInit {
       { headers: this.headers });
   }
 
-  /* Salvar Consultorio */
-  public editarConsultorio(consultorio: Consultorio): Observable<Consultorio> {
-    return this.http.post<Consultorio>(this.baseURL + "api/consultorio/EditarConsultorio", JSON.stringify(consultorio),
-      { headers: this.headers });
-  }
-
   /* Deletar Consultorio */
   public deletar(consultorio: Consultorio): Observable<Consultorio[]> {
     return this.http.post<Consultorio[]>(this.baseURL + "api/consultorio/deletar", JSON.stringify(consultorio),
