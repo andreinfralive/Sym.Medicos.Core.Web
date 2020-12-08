@@ -10,8 +10,6 @@ namespace Sym.Medicos.Core.Web
 {
     public class Startup
     {
-        //readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,13 +19,6 @@ namespace Sym.Medicos.Core.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // ********************
-            // Setup CORS
-            // ********************
-            //services.AddCors(options => options.AddPolicy("AllowAll", p => p.AllowAnyOrigin()
-            //                                                        .AllowAnyMethod()
-            //                                                         .AllowAnyHeader()));
-
             services.AddControllersWithViews();
 
             services.AddSpaStaticFiles(configuration =>
@@ -38,11 +29,6 @@ namespace Sym.Medicos.Core.Web
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // ********************
-            // USE CORS - might not be required.
-            // ********************
-            //app.UseCors("AllowAll");
-
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
