@@ -51,9 +51,12 @@
     <None Remove="ClientApp\src\app\services\consutorio\consultorio.servico.ts" />
     <None Remove="ClientApp\src\app\services\medico\medico.servico.ts" />
     <None Remove="ClientApp\src\app\services\usuario\usuario.servico.ts" />
+    <None Remove="ClientApp\src\app\services\vinculo\vinculo.service.ts" />
     <None Remove="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
     <None Remove="ClientApp\src\app\usuario\login\login.component.ts" />
     <None Remove="ClientApp\src\app\usuario\pesquisa\pesquisa.usuario.component.ts" />
+    <None Remove="ClientApp\src\app\vinculo\pesquisa\pesquisa.vinculo.component.ts" />
+    <None Remove="ClientApp\src\app\vinculo\vinculo.component.ts" />
   </ItemGroup>
 
   <ItemGroup>

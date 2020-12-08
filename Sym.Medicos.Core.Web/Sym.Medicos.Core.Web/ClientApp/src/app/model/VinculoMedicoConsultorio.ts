@@ -2,5 +2,8 @@
 export class VinculoMedicoConsultorio {
   public idVinculoMedicoConsultorio: number;
   public idMedico: number;
+  public crm: string;
+  public nomeMedico: string;
   public idConsultorio: number;
+  public nomeConsultorio: string;
 }
